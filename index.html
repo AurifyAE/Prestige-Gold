@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="./prestige-icon-1.png">
+  <title>
+    PRESTIGE BULLION
+  </title>
+  <!-- Link Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!--     Fonts and icons     -->
+  <script src="https://kit.fontawesome.com/0e1fa7c1a3.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    body {
+      margin: 0;
+      padding: 30px 30px;
+      font-family: "arial", heletica, sans-serif;
+      font-size: 24px;
+      background: white url('./Background_1.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      -webkit-animation: 20s linear 0s normal none infinite animate;
+      -moz-animation: 20s linear 0s normal none infinite animate;
+      -ms-animation: 20s linear 0s normal none infinite animate;
+      -o-animation: 20s linear 0s normal none infinite animate;
+      animation: 20s linear 0s normal none infinite animate;
+      color: black;
+      height: 100vh;
+    }
+
+    .row {
+      padding: 25px;
+    }
+
+    .rate-card {
+      display: none;
+    }
+
+    .card-table {
+      border-collapse: collapse;
+      border-spacing: 10px;
+      opacity: 0.9;
+    }
+
+    table {
+      display: inline-table;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-left: 0px;
+      font-size: 1.8vw;
+      color: black;
+      border-collapse: collapse;
+    }
+
+    .card-table tbody {
+      margin-top: 10px;
+    }
+
+    /* .card-table tbody tr {
+      border-bottom: 18px solid transparent;
+      background-clip: padding-box;
+    } */
+
+    .card-table tr {
+      background-color: #f9f9f9;
+      opacity: 80%;
+      /* Light gray background for odd rows */
+    }
+
+    .card-table tbody tr:nth-child(even) {
+      background-color: transparent;
+      /* Dark gray background for even rows */
+    }
+
+    .card-table table thead th:first-child {
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+    }
+
+    .card-table table thead th:last-child {
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+
+    /* .card-table table tbody{
+      border-radius: 25px;
+    } */
+
+    .card-table table tbody td:first-child {
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      /* border-bottom: 18px solid transparent;
+      background-clip: padding-box; */
+    }
+
+    .card-table table tbody td:last-child {
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+      /* border-bottom: 18px solid transparent;
+      background-clip: padding-box; */
+    }
+
+    .card-table th {
+      background-color: #075699;
+      color: white;
+      opacity: 100%;
+    }
+
+    /* .card-table tbody td {} */
+
+    .card-table th,
+    .card-table td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    .card-table td {
+      font-weight: bold;
+    }
+
+    .silver-table td {
+      font-size: 1.8vw;
+    }
+
+    /* Hover effect for better user experience */
+    .card-table tbody tr:hover {
+      background-color: #d3d3d3;
+      /* Lighter gray on hover */
+    }
+
+    .row2 {
+      display: flex;
+      flex-direction: row;
+      margin-top: 50px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: row;
+      /* background-color: #fff; */
+      box-shadow: 2px 2px 10px #424242;
+      opacity: 75%;
+      height: 70px;
+      width: 100%;
+      border-radius: 18px;
+    }
+
+    .news-card .news-label {
+      display: flex;
+      width: 500px;
+      padding: 5px;
+      flex-direction: column;
+      align-items: center;
+      background-color: #075699;
+      opacity: 100%;
+      color: white;
+    }
+
+    .news-card .news-label h3 {
+      font-size: 1.4vw;
+      font-weight: 600;
+    }
+
+    .news-card .news-label p {
+      margin-top: -15px;
+      font-size: 1.1vw;
+      font-weight: 600;
+    }
+
+    .news-card .news {
+      display: flex;
+      padding: 5px;
+      font-size: 1.8vw;
+      color: #fff;
+      font-weight: 400;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .carousel-container img {
+      width: 720px;
+      height: 200px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      margin-left: -60px;
+      object-fit: fill;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="col-lg-12 mb-5" style="display: flex; flex-direction: row; justify-content: space-between;">
+    <div style="display: flex; flex-direction: row;">
+      <img class="logo" src="./prestige-bullion-1.png" alt=""
+        style="width: 280px; margin-top: 10px; margin-left: 10px;">
+    </div>
+    <div
+      style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; border-radius: 25px; width: max-content; padding: 15px; box-shadow:2px 2px 10px #424242;">
+      <div id="clock" style="font-size: 2.8vw; color: #fff; font-weight: 600; padding: 15px;"></div>
+      <div style="width: 50px;"></div>
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px;">
+        <div id="day" style="font-size: xx-large; color: #fff;"></div>
+        <div id="date" style="font-size: xx-large; color: #fff;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div
+    style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 0px;  margin-left: -20px;">
+    <div class="col-lg-5 mb-5" style="display: flex; flex-direction: column;">
+      <!-- <div class="carousel-container">
+        <img id="carouselImage" src="./assets/images/image1.jpg" alt="">
+      </div> -->
+      <div>
+        <div
+          style="background-color: #075699; display: flex; flex-direction: row; justify-content: space-around; align-items: center; border-radius: 25px; opacity: 70%; box-shadow:2px 2px 10px #424242;">
+          <div>
+            <p style="text-align: center; font-size: 40px; font-weight: 600; color: #fff;">SPOT RATE</p>
+          </div>
+          <div class="" style="display: flex; flex-direction: row;">
+            <p style="color: #fff; font-size: 40px;">BID</p>
+            <div
+              style="background-color: #021718;height: 32px;width: 32px;border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center; margin-top: 12px;">
+              <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+            </div>
+          </div>
+          <div class="" style="display: flex; flex-direction: row;">
+            <p style="color: #fff; font-size: 40px;">ASK</p>
+            <div
+              style="background-color: #021718;height: 32px;width: 32px; border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center; margin-top: 12px;">
+              <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <div
+            style="display: flex; flex-direction: row; justify-content: space-between; background-color: transparent; padding: 25px;  margin-top: 18px; border-radius: 25px; opacity: 80%;  box-shadow:2px 2px 10px #424242;">
+            <div style="display: flex; flex-direction: row; align-items: center;">
+              <p style="font-size: 40px; color: #fff; font-weight: 600;">Gold</p>
+              <h5 style="font-size: 30px; color: #fff;">oz</h5>
+            </div>
+            <div>
+              <div class="" id="goldInputLow"
+                style="font-size: 2.6vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+              </div>
+              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
+                id="lowLabelGold">0</label>
+            </div>
+            <div>
+              <div class="" id="goldInputHigh"
+                style="font-size: 2.6vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+              </div>
+              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
+                id="highLabelGold">0</label>
+            </div>
+          </div>
+          <div
+            style="display: flex; flex-direction: row; justify-content: space-between; background-color: transparent; padding: 25px;  margin-top: 18px; border-radius: 25px; opacity: 80%;  box-shadow:2px 2px 10px #424242;">
+            <div style="display: flex; flex-direction: row; align-items: center;">
+              <p style="font-size: 40px; color: #fff; font-weight: 600;">Silver</p>
+              <h5 style="font-size: 30px; color: #fff;">oz</h5>
+            </div>
+            <div>
+              <div class="" id="silverInputLow"
+                style="font-size: 2vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+              </div>
+              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
+                id="lowLabelSilver">0</label>
+            </div>
+            <div>
+              <div class="" id="silverInputHigh"
+                style="font-size: 2vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+              </div>
+              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
+                id="highLabelSilver">0</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-7 ">
+      <div class="card-table">
+        <table>
+          <thead style="margin-bottom: 0px;">
+            <tr>
+              <th colspan="2">COMMODITY</th>
+              <th>UNIT</th>
+              <th>BID (<span id="currencySymbol">AED</span>)</th>
+              <th>ASK (<span id="currencySymbol">AED</span>)</th>
+            </tr>
+            <tr style="height: 10px;background-color: transparent;"></tr>
+          </thead>
+
+          <tbody id="tableBodyTV">
+            <!-- Table body content will be dynamically updated here -->
+          </tbody>
+          <!-- <tbody class="silver-table">
+            <tr>
+              <td style="text-align: right;">Silver</td>
+              <td style="text-align: left; font-size:28px;" >999</td>
+              <td>1 KG</td>
+              <td id="silverBidTd"></td>
+              <td id="silverAskTd"></td>
+            </tr>
+          </tbody> -->
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row " style="margin-top: -50px;  margin-left: -30px;">
+    <div class="col-lg-12 news-card" style=" max-width: 100%;">
+      <div class="news-label">
+        <h3>PRESTIGE BULLION</h3>
+        <p>Latest News</p>
+      </div>
+      <div class="news">
+        <!-- Display News Here -->
+        <marquee behavior="scrolling" direction="left" id="displayNews">-</marquee>
+      </div>
+    </div>
+  </div>
+
+  <div class="rate-card">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="gold-card">
+            <img src="./assets/img/gold.png" alt="">
+            <h3>Gold</h3>
+          </div>
+          <p id="goldRate"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="silver-card">
+            <img src="./assets/img/silver.png" alt="">
+            <h3>Silver</h3>
+          </div>
+          <p id="silverRate"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Link Bootstrap JS and Popper.js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function startTime() {
+      function updateTime() {
+        var today = new Date();
+        var hr = today.getHours();
+        var min = today.getMinutes();
+        // var sec = today.getSeconds();
+        var ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+        hr = (hr == 0) ? 12 : hr;
+        hr = (hr > 12) ? hr - 12 : hr;
+        // Add a zero in front of numbers < 10
+        hr = checkTime(hr);
+        min = checkTime(min);
+        // sec = checkTime(sec);
+        // + ":" + sec
+        document.getElementById("clock").innerHTML = hr + ":" + min + " " + ap;
+
+        var months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+        var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+        var curWeekDay = days[today.getDay()];
+        var curDay = today.getDate();
+        var curMonth = months[today.getMonth()];
+        var curYear = today.getFullYear();
+        var date = curDay + " " + curMonth + " " + curYear;
+        var day = curWeekDay;
+        document.getElementById("date").innerHTML = date;
+        document.getElementById("day").innerHTML = day;
+      }
+
+      // Call updateTime immediately to set the initial values
+      updateTime();
+
+      // Update every second using setInterval
+      var intervalId = setInterval(updateTime, 1000);
+
+      // Optional: If you want to stop the interval after a specific duration (e.g., 30 minutes)
+      // Uncomment the following lines:
+      // setTimeout(function() {
+      //   clearInterval(intervalId);
+      // }, 30 * 60 * 1000);
+    }
+
+    function checkTime(i) {
+      return (i < 10) ? "0" + i : i;
+    }
+
+    startTime();
+
+  </script>
+  <script>
+    let currentIndex = 0;
+    const images = ['./assets/images/image1.jpg', './assets/images/image2.jpg', './assets/images/image3.jpeg']; // Add your image URLs here
+    // assets\images\image1.jpg
+    function showImage() {
+      const carouselImage = document.getElementById("carouselImage");
+      carouselImage.src = images[currentIndex];
+      currentIndex = (currentIndex + 1) % images.length;
+    }
+
+    // Show the first image
+    showImage();
+
+    // Automatic carousel
+    setInterval(showImage, 3000); // Change image every 3 seconds
+  </script>
+  <script>
+    // Check if the screen width is below a certain threshold (e.g., 1000 pixels)
+    if (window.innerWidth < 1024) {
+      // Redirect users from mobile and tablet devices to a different page or show an error message
+      window.location.href = '../../../pages/error.html'; // Redirect to a mobile error page
+    }
+  </script>
+  <script src="https://unpkg.com/metaapi.cloud-sdk"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script type="module" src="./config/db.js"></script>
+  <script type="module" src="./assets/js/core/spotrateDB.js"></script>
+  <script type="module" defer src="./assets/js/core/displayNews.js"></script>
+  <script type="module" defer src="./assets/js/core/aurifyview2.js"></script>
+</body>
+
+</html>
