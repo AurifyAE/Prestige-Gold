@@ -11,6 +11,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
 import { app } from '../../../config/db.js';
+import { USER_ID } from '../../../global/global.js'
 
 
 const firestore = getFirestore(app);
@@ -19,7 +20,7 @@ const auth = getAuth(app);
 // Function to Read News from Database
 function displayNews() {
     // Get the UID of the authenticated user
-    const uid = 'yCgoYhWoqdUKuv7b06XYXgHbG3C3';
+    const uid = USER_ID;
 
     if (!uid) {
         console.error('User not authenticated');
