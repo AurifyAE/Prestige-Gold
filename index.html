@@ -53,7 +53,7 @@
       align-items: center;
       width: 100%;
       margin-left: 0px;
-      font-size: 1.8vw;
+      font-size: 2.3vw;
       color: black;
       border-collapse: collapse;
     }
@@ -227,7 +227,7 @@
 
   <div
     style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 0px;  margin-left: -20px;">
-    <div class="col-lg-5 mb-5" style="display: flex; flex-direction: column;">
+    <div class="col-lg-5 mb-5 mt-3" style="display: flex; flex-direction: column;">
       <div>
         <div
           style="background-color: #075699; display: flex; flex-direction: row; justify-content: space-around; align-items: center; border-radius: 25px; opacity: 70%; box-shadow:2px 2px 10px #424242;">
@@ -235,14 +235,14 @@
             <p style="text-align: center; font-size: 40px; font-weight: 600; color: #fff;">SPOT RATE</p>
           </div>
           <div class="" style="display: flex; flex-direction: row;">
-            <p style="color: #fff; font-size: 40px;">BID</p>
+            <p style="color: #fff; font-size: 45px;">BID</p>
             <div
               style="background-color: #021718;height: 32px;width: 32px;border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center; margin-top: 12px;">
               <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
             </div>
           </div>
           <div class="" style="display: flex; flex-direction: row;">
-            <p style="color: #fff; font-size: 40px;">ASK</p>
+            <p style="color: #fff; font-size: 45px;">ASK</p>
             <div
               style="background-color: #021718;height: 32px;width: 32px; border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center; margin-top: 12px;">
               <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
@@ -253,43 +253,47 @@
           <div
             style="display: flex; flex-direction: row; justify-content: space-between; background-color: transparent; padding: 25px;  margin-top: 18px; border-radius: 25px; opacity: 80%;  box-shadow:2px 2px 10px #424242;">
             <div style="display: flex; flex-direction: row; align-items: center;">
-              <p style="font-size: 40px; color: #fff; font-weight: 600;">Gold</p>
-              <h5 style="font-size: 30px; color: #fff;">oz</h5>
+              <p style="font-size: 45px; color: #fff; font-weight: 600;">Gold</p>
+              <h5 style="font-size: 35px; color: #fff;">oz</h5>
             </div>
             <div>
               <div class="" id="goldInputLow"
-                style="font-size: 2.6vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+                style="font-size: 2.8vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
               </div>
-              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
-                id="lowLabelGold">0</label>
+              <label class="badge badge-success label-low mt-1"
+                style="width: 250px; font-size:24px; background-color: red;">LOW <span
+                  id="lowLabelGold">0</span></label>
             </div>
             <div>
               <div class="" id="goldInputHigh"
-                style="font-size: 2.6vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+                style="font-size: 2.8vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
               </div>
-              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
-                id="highLabelGold">0</label>
+              <label class="badge badge-success label-low mt-1"
+                style="width: 250px; font-size:24px; background-color: green;">HIGH <span
+                  id="highLabelGold">0</span></label>
             </div>
           </div>
           <div
             style="display: flex; flex-direction: row; justify-content: space-between; background-color: transparent; padding: 25px;  margin-top: 18px; border-radius: 25px; opacity: 80%;  box-shadow:2px 2px 10px #424242;">
             <div style="display: flex; flex-direction: row; align-items: center;">
-              <p style="font-size: 40px; color: #fff; font-weight: 600;">Silver</p>
-              <h5 style="font-size: 30px; color: #fff;">oz</h5>
+              <p style="font-size: 45px; color: #fff; font-weight: 600;">Silver</p>
+              <h5 style="font-size: 35px; color: #fff;">oz</h5>
             </div>
             <div>
               <div class="" id="silverInputLow"
-                style="font-size: 2vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+                style="font-size: 2.4vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
               </div>
-              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
-                id="lowLabelSilver">0</label>
+              <label class="badge badge-success label-low mt-1"
+                style="width: 250px; font-size:24px; background-color: red;">LOW <span
+                  id="lowLabelSilver">0</span></label>
             </div>
             <div>
               <div class="" id="silverInputHigh"
-                style="font-size: 2vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
+                style="font-size: 2.4vw; width: 250px; background-color: #fff; padding: 15px; font-weight: 600; text-align: center;">
               </div>
-              <label class="badge badge-success label-low mt-1" style="width: 250px; font-size:24px;"
-                id="highLabelSilver">0</label>
+              <label class="badge badge-success label-low mt-1"
+                style="width: 250px; font-size:24px; background-color: green;">HIGH <span
+                  id="highLabelSilver">0</span></label>
             </div>
           </div>
         </div>
@@ -297,12 +301,12 @@
     </div>
 
 
-    <div class="col-lg-7 ">
+    <div class="col-lg-7 mt-3">
       <div class="card-table">
         <table>
           <thead style="margin-bottom: 0px;">
             <tr>
-              <th colspan="2">COMMODITY</th>
+              <th colspan="2" style="text-align: right;">COMMODITY</th>
               <th>UNIT</th>
               <th>BID (<span id="currencySymbol">AED</span>)</th>
               <th>ASK (<span id="currencySymbol">AED</span>)</th>
@@ -327,7 +331,7 @@
     </div>
   </div>
 
-  <div class="row " style="margin-top: -50px;  margin-left: -30px;">
+  <div class="row " style="margin-top: 50px;  margin-left: -30px;">
     <div class="col-lg-12 news-card" style=" max-width: 100%;">
       <div class="news-label">
         <h3>PRESTIGE BULLION</h3>
@@ -429,7 +433,7 @@
   </script>
   <script>
     let currentIndex = 0;
-    const images = ['./assets/images/image1.jpg', './assets/images/image2.jpg', './assets/images/image3.jpeg']; // Add your image URLs here
+    const images = ['./assets/images/image1.jpg', './assets/images/image2.webp', './assets/images/image3.jpeg']; // Add your image URLs here
     // assets\images\image1.jpg
     function showImage() {
       const carouselImage = document.getElementById("carouselImage");
