@@ -1,5 +1,5 @@
 // import { readSpreadValues } from '../core/spotrateDB.js';
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
 import { app } from '../../../config/db.js';
 import { USER_ID, API_KEY } from '../../../global/global.js'
 
@@ -266,25 +266,60 @@ async function displaySpreadValues() {
 
 
 // Function to read data from the Firestore collection
+// async function readData() {
+//     // Get the UID of the authenticated user
+//     const uid = USER_ID;
+
+//     if (!uid) {
+//         console.error('User not authenticated');
+//         return Promise.reject('User not authenticated');
+//     }
+
+//     const querySnapshot = await getDocs(collection(firestore, `users/${uid}/commodities`));
+//     const result = [];
+//     querySnapshot.forEach((doc) => {
+//         result.push({
+//             id: doc.id,
+//             data: doc.data()
+//         });
+//     });
+//     return result;
+// }
+
 async function readData() {
     // Get the UID of the authenticated user
     const uid = USER_ID;
 
     if (!uid) {
         console.error('User not authenticated');
-        return Promise.reject('User not authenticated');
+        return 'User not authenticated';
     }
 
-    const querySnapshot = await getDocs(collection(firestore, `users/${uid}/commodities`));
-    const result = [];
-    querySnapshot.forEach((doc) => {
-        result.push({
-            id: doc.id,
-            data: doc.data()
+    try {
+
+        const querys = await query(
+            collection(firestore, `users/${uid}/commodities`),
+            orderBy("timestamp", "asc") // Sort by timestamp in ascending order
+        )
+        const querySnapshot = await getDocs(querys);
+
+        const result = [];
+
+        querySnapshot.docs.forEach((doc) => {
+            result.push({
+                id: doc.id,
+                data: doc.data()
+            })
         });
-    });
-    return result;
+
+        return result;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
 }
+
+
 
 // // Show Table from Database
 // async function showTable() {
@@ -394,11 +429,19 @@ async function showTable() {
             const sellPremiumInputAED = data.data.sellPremiumAED;
             const buyPremiumInputAED = data.data.buyPremiumAED;
 
+            let metal, purity;
+            if (weightInput === 'TTB') {
+                metal = 'GOLD'
+                purity = 'TEN TOLA'
+            } else {
+                metal = metalInput
+                purity = purityInput
+            }
+
             // Create a new table row for data
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
-                <td style="text-align: right;">${metalInput}</td>
-                <td style="text-align: left; font-size:28px; font-weight: 600;">${purityInput}</td>
+                <td colspan="2" style="text-align: center;">${metal} <span style="font-size: 25px;">${purity}</span></td>
                 <td>${unitInput} ${weightInput}</td>
                 <td id="buyAED">0</td>
                 <td id="sellAED">0</td>

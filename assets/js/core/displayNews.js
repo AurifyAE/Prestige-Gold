@@ -42,7 +42,7 @@ function displayNews() {
                 // Add news content to the array
                 newsArray.push(newsData.newsContent);
             });
-            console.log(newsArray);
+            // console.log(newsArray);
             // Display the news content in a single div
             const displayNewsDiv = document.getElementById("displayNews");
             displayNewsDiv.innerHTML = newsArray.join(" >> ");
