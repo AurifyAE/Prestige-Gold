@@ -13,12 +13,11 @@ const firestore = getFirestore(app)
 
 setInterval(fetchData1, 500);
 
-// setInterval(() => {
-//     blinker()
-// }, 500)
+setTimeout(() => {
+    showTable();
+}, 500)
 
-fetchData()
-showTable();
+fetchData();
 
 
 let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread, goldBuy, goldSell, silverBuy, silverSell, silverValue, goldValueUSD, goldHigh, goldLow;
