@@ -27,7 +27,7 @@ setInterval(fetchData1, 500);
 
 setInterval(() => {
     fetchData();
-}, 1200)
+}, 500)
 
 // fetchData();
 showTable();
@@ -378,7 +378,7 @@ async function showTable() {
                 //     newRow.querySelector("#sellAED").innerText = parseInt(sellAEDValue).toFixed(0); // Round to remove decimals
                 //     newRow.querySelector("#buyAED").innerText = parseInt(buyAEDValue).toFixed(0);   // Round to remove decimals
                 // }
-                if (weight === "GM" && unitInput < 1) {
+                if (weight === "GM") {
                     // Update the sellAED and buyAED values for the current
                     newRow.querySelector("#sellAED").innerText = parseFloat(
                         (
