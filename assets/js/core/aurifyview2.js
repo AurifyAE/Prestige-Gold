@@ -106,10 +106,10 @@ async function fetchData1() {
         var currentSilverSell = silverSell;
 
         function updatePrice() {
-            var newGoldBuy = goldBuy;
-            var newGoldSell = goldSell;
-            var newSilverBuy = silverBuy;
-            var newSilverSell = silverSell;
+            var newGoldBuy = goldBuy ? goldBuy : 0;
+            var newGoldSell = goldSell ? goldSell : 0;
+            var newSilverBuy = silverBuy ? silverBuy : 0;
+            var newSilverSell = silverSell ? silverSell : 0;
 
             var element1 = document.getElementById("goldInputLow");
             var element2 = document.getElementById("goldInputHigh");
@@ -196,10 +196,10 @@ async function fetchData1() {
 
         updatePrice();
 
-        document.getElementById("lowLabelGold").innerHTML = goldLow;
-        document.getElementById("highLabelGold").innerHTML = goldHigh;
-        document.getElementById("lowLabelSilver").innerHTML = silverLow;
-        document.getElementById("highLabelSilver").innerHTML = silverHigh;
+        document.getElementById("lowLabelGold").innerHTML = goldLow ? goldLow : 0;
+        document.getElementById("highLabelGold").innerHTML = goldHigh ? goldHigh : 0;
+        document.getElementById("lowLabelSilver").innerHTML = silverLow ? silverLow : 0;
+        document.getElementById("highLabelSilver").innerHTML = silverHigh ? silverHigh : 0;
 
         var element;
 
