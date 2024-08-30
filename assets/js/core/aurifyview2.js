@@ -427,7 +427,7 @@ async function showTable() {
                 }
 
 
-            }, 500)
+            }, 100)
         }
     } catch (error) {
         console.error('Error reading data:', error);

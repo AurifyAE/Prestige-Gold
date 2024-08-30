@@ -8,13 +8,14 @@
   <title>
     PRESTIGE BULLION
   </title>
+  <!-- Socket -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
   <!-- Link Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!--     Fonts and icons     -->
   <script src="https://kit.fontawesome.com/0e1fa7c1a3.js" crossorigin="anonymous"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
 
     body {
       margin: 0;
@@ -381,6 +382,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/metaapi.cloud-sdk"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script type="module" defer src="./assets/js/core/aurifyview2.js"></script>
+  <script type="module" src="./config/db.js"></script>
+  <script type="module" src="./assets/js/core/spotrateDB.js"></script>
+  <script type="module" defer src="./assets/js/core/displayNews.js"></script>
 
   <script>
     function startTime() {
@@ -454,14 +463,6 @@
       window.location.href = '../../../pages/error.html'; // Redirect to a mobile error page
     }
   </script>
-  <script src="https://unpkg.com/metaapi.cloud-sdk"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
-  <script type="module" defer src="./assets/js/core/aurifyview2.js"></script>
-  <script type="module" src="./config/db.js"></script>
-  <script type="module" src="./assets/js/core/spotrateDB.js"></script>
-  <script type="module" defer src="./assets/js/core/displayNews.js"></script>
 </body>
 
 </html>
